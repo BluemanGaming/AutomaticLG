@@ -7,12 +7,12 @@
 
 Citizen.CreateThread(function()
     while true do
-        local PlayerPed = GetPlayerPed(-1)
+        local PlayerPed = GetPlayerPed(PlayerId())
         if IsPedInAnyPlane(PlayerPed) then
-            local veh = GetVehiclePedIsIn(GetPlayerPed(-1), false)
+            local veh = GetVehiclePedIsIn(GetPlayerPed(PlayerId()), false)
             if GetEntityHeightAboveGround(veh) > 20.0 and GetVehicleLandingGear(veh) == 0 then
                 SetVehicleLandingGear(veh, 1)
-            elseif GetEntityHeightAboveGround(veh) < 20.0 and GetVehicleLandingGear(veh) ~= 0 then
+            else
                 SetVehicleLandingGear(veh, 2)
             end
         end
